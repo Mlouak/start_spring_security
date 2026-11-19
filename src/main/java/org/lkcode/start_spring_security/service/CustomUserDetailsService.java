@@ -1,11 +1,12 @@
-package org.lkcode.start_spring_security.services;
+package org.lkcode.start_spring_security.service;
 
-import org.lkcode.start_spring_security.models.SecurityUser;
-import org.lkcode.start_spring_security.repositories.UserRepository;
+import org.lkcode.start_spring_security.model.User;
+import org.lkcode.start_spring_security.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
@@ -18,9 +19,14 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return new SecurityUser(
-            userRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username))
-        );
+        User user = userRepository.findByEmail(username).orElse(null);
+        if (user == null) {
+            throw new UsernameNotFoundException("User not found");
+        }
+        return org.springframework.security.core.userdetails.User.builder()
+                .username(user.getEmail())
+                .password(user.getPassword())
+                .authorities("USER")
+                .build();
     }
 }

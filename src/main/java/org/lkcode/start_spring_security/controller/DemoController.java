@@ -1,4 +1,4 @@
-package org.lkcode.start_spring_security.controllers;
+package org.lkcode.start_spring_security.controller;
 
 
 import org.springframework.security.core.Authentication;

@@ -2,7 +2,7 @@ spring:
   application:
     name: start_spring_security
   datasource:
-    url: ${DB_URL:jdbc:postgresql://localhost:5432/spring_security}
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/email_verification}
     username: ${DB_USERNAME:postgres}
     password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
@@ -10,3 +10,14 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME:medloik8@gmail.com}
+    password: ${MAIL_PASSWORD:mqrjlasijzlomhcd}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
