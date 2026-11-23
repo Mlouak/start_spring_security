@@ -52,4 +52,6 @@ public class DemoController {
         registrationService.register(request.username(), request.password());
         return "User registered successfully";
     }
+
+
 }
