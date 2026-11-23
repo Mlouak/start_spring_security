@@ -7,6 +7,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -16,7 +17,7 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http
+        /*return http
                 .authorizeHttpRequests(matcherRegistry -> matcherRegistry
                         .requestMatchers("/user").hasAnyRole("USER", "ADMIN")
                         .requestMatchers("/admin").hasRole("ADMIN")
@@ -27,7 +28,20 @@ public class SecurityConfig {
                 )
                 .httpBasic(Customizer.withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)
-                .build();
+                .build();*/
+        http
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/register", "/update-password").permitAll()
+                        .anyRequest().permitAll()
+                )
+                .formLogin(formLogin ->
+                        formLogin
+                                .loginPage("/login")
+                                .defaultSuccessUrl("/home", true)
+                                .permitAll()
+                )
+                .logout(LogoutConfigurer::permitAll);
+        return http.build();
     }
 
     @Bean

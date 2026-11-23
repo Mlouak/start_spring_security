@@ -1,6 +1,6 @@
-package org.lkcode.start_spring_security.repositories;
+package org.lkcode.start_spring_security.repository;
 
-import org.lkcode.start_spring_security.models.UserProfile;
+import org.lkcode.start_spring_security.model.UserProfile;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 

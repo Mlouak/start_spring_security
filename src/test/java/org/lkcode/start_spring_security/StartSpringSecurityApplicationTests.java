@@ -1,7 +1,7 @@
 package org.lkcode.start_spring_security;
 
 import org.junit.jupiter.api.Test;
-import org.lkcode.start_spring_security.repositories.UserRepository;
+import org.lkcode.start_spring_security.repository.UserRepository;
 import org.lkcode.start_spring_security.services.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <title>Home</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .home-container {
+            margin-top: 100px;
+            text-align: center;
+        }
+        .home-card {
+            border: 1px solid #28a745;
+        }
+        .home-card-header {
+            background-color: #28a745;
+            color: white;
+        }
+        .btn-primary {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+        .btn-primary:hover {
+            background-color: #218838;
+            border-color: #218838;
+        }
+    </style>
+</head>
+<body>
+<div class="container home-container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card home-card">
+                <div class="card-header home-card-header">
+                    <h2>Welcome Home</h2>
+                </div>
+                <div class="card-body">
+                    <a th:href="@{/update-password}" class="btn btn-primary btn-block">Update Password</a>
+                    <a th:href="@{/logout}" class="btn btn-secondary btn-block">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

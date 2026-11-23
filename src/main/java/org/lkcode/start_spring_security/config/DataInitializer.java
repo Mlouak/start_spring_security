@@ -1,7 +1,7 @@
 package org.lkcode.start_spring_security.config;
 
-import org.lkcode.start_spring_security.models.UserProfile;
-import org.lkcode.start_spring_security.repositories.UserRepository;
+import org.lkcode.start_spring_security.model.UserProfile;
+import org.lkcode.start_spring_security.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

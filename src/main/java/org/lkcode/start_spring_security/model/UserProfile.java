@@ -1,4 +1,4 @@
-package org.lkcode.start_spring_security.models;
+package org.lkcode.start_spring_security.model;
 
 import jakarta.persistence.*;
 import java.util.List;
@@ -16,6 +16,8 @@ public class UserProfile {
 
     @Column(nullable = false)
     private String password;
+
+    private boolean enabled = true;
 
     @ElementCollection
     @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
@@ -44,5 +46,17 @@ public class UserProfile {
 
     public List<String> getRoles() {
         return roles;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
