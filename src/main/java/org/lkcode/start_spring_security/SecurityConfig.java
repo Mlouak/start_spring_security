@@ -25,13 +25,12 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests(matcherRegistry -> matcherRegistry
-                        .requestMatchers(HttpMethod.GET, "/login", "/register").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/", "/login", "/register", "/public").permitAll()
                         .requestMatchers(HttpMethod.POST, "/register").permitAll()
                         .requestMatchers("/user").hasAnyRole("USER", "ADMIN")
                         .requestMatchers("/admin").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST, "/public").hasAuthority("WRITE")
                         .requestMatchers("/secured").authenticated()
-                        .requestMatchers(HttpMethod.GET, "/", "/public").permitAll()
                         .anyRequest().denyAll()
                 )
                 .formLogin(form -> form
