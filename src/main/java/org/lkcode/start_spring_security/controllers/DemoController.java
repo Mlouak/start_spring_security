@@ -49,7 +49,7 @@ public class DemoController {
 
     @PostMapping("/register")
     public String register(@RequestBody RegisterRequest request) {
-        registrationService.register(request.username(), request.password());
+        registrationService.register(request.getUsername(), request.getPassword());
         return "User registered successfully";
     }
 }
